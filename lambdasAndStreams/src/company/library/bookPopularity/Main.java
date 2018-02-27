@@ -17,17 +17,17 @@ public class Main {
         booksList.add(javaBook);
         booksList.add(phpBook);
         booksList.add(groovyBook);
-        booksList.forEach(b -> System.out.println(getPopularity(b)));
+        booksList.forEach(b -> popularity
+                .calculatePopularity(b.getBookQtyInLibrary(), b.getBookQtyInReadingRoom(), b.getBookQtyOnHands()));
     }
 
-    public static double getPopularity(BookInfo bookInfo) {
-        double popularity = bookInfo.getBookQtyOnHands()
-                / (bookInfo.getBookQtyInLibrary() + bookInfo.getBookQtyInReadingRoom());
+    private static Popularity popularity = (bookQtyInLibrary, bookQtyInReadingRoom, bookQtyOnHands) -> {
+        double popularity = (double) bookQtyOnHands / (bookQtyInLibrary + bookQtyInReadingRoom);
         if (popularity > 0.5) {
-            System.out.println(popularity + " - It is a popular book");
+            System.out.println(String.format("%.2f", popularity) + " - It is a popular book");
         } else {
-            System.out.println(popularity + " - It is not a popular book");
+            System.out.println(String.format("%.2f", popularity) + " - It is not a popular book");
         }
         return popularity;
-    }
+    };
 }

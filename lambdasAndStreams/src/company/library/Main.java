@@ -1,7 +1,7 @@
 package company.library;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
@@ -33,8 +33,9 @@ public class Main {
 
         System.out.println("\nMax number of pages: " + Arrays
                 .stream(books)
-                .mapToInt(Book::getNumberOfPages)//todo
-                .max());
+                .mapToInt(Book::getNumberOfPages)
+                .max()
+                .getAsInt());
 
         System.out.println("\nMin number of pages: " + Arrays
                 .stream(books)
@@ -46,47 +47,48 @@ public class Main {
                 .filter(book -> book.getAuthors().size() == 1)
                 .forEach(System.out::println);
 
-        System.out.println("\nSort the books by number of pages:");//todo
+        System.out.println("\nSort the books by number of pages:");
         Arrays
                 .stream(books)
                 .parallel()
-                .sorted(comparing(Book::getNumberOfPages))
+                .sorted(Comparator.comparingInt(Book::getNumberOfPages))
+                .collect(Collectors.toList())
                 .forEach(System.out::println);
 
         System.out.println("\nSort the books by title:");
         Arrays
                 .stream(books)
                 .parallel()
-                .sorted(comparing(Book::getTitle))
+                .sorted(Comparator.comparing(Book::getTitle))
+                .collect(Collectors.toList())
                 .forEach(System.out::println);
 
-        System.out.println("\nGet list of all titles:");
-        List<String> titlesList = Arrays
+        System.out.println("\nGet list of all titles:" +
+                "\nPrint them using forEach method:");
+        Arrays
                 .stream(books)
                 .map(Book::getTitle)
-                .peek(System.out::println)
-                .collect(Collectors.toList());
-
-        System.out.println("\nPrint them using forEach method:");
-        titlesList.forEach(System.out::println);
+                .peek(b -> System.out.println("debug: " + b))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
 
         System.out.println("\nGet distinct list of all authors:");
         Arrays
                 .stream(books)
                 .map(Book::getAuthors)
-                .flatMap(authorsDistinct -> Arrays.stream(authors))//todo
+                .flatMap(authorsNotDistinct -> Arrays.stream(authors))
                 .distinct()
                 .forEach(System.out::println);
 
         System.out.println("\nUse the Option type for determining the title of the biggest book of some author: ");
         Arrays
                 .stream(books)
-                .max(comparing(Book::getNumberOfPages))
+                .max(Comparator.comparing(Book::getNumberOfPages))
                 .ifPresent(book -> System.out.println("Book with title " + book.getTitle() + ", with "
                         + book.getNumberOfPages() + " pages"));
     }
 
-    public static Book[] createBooks() {
+    private static Book[] createBooks() {
         return new Book[]{
                 new Book("Java programming", ThreadLocalRandom.current().nextInt(80, 800)),
                 new Book("PHP programming", ThreadLocalRandom.current().nextInt(80, 800)),
@@ -100,7 +102,7 @@ public class Main {
         };
     }
 
-    public static Author[] createAuthors() {
+    private static Author[] createAuthors() {
         return new Author[]{
                 new Author("Yuliya", (short) ThreadLocalRandom.current().nextInt(10, 80)),
                 new Author("Petya", (short) ThreadLocalRandom.current().nextInt(10, 80)),
