@@ -2,6 +2,6 @@ package company.animals;
 
 public abstract class Animal {
 
-    abstract void play();
-    abstract void voice();
-}
+    public abstract void play();
+    public abstract void voice();
+    }
