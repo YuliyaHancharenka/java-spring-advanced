@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="race" class="domain.Race"/>
+
+    <bean id="Arrow" class="domain.Horse">
+        <property name="name" value="Arrow"/>
+        <property name="startNumber" value="1"/>
+        <property name="breed">
+            <bean class="domain.Breed">
+                <property name="name" value="American breed"/>
+            </bean>
+        </property>
+        <property name="rider">
+            <bean class="domain.Rider">
+                <property name="name" value="Bob"/>
+                <property name="country" value="USA"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="Bullet" class="domain.Horse">
+        <property name="name" value="Bullet"/>
+        <property name="startNumber" value="2"/>
+        <property name="breed">
+            <bean class="domain.Breed">
+                <property name="name" value="German breed"/>
+            </bean>
+        </property>
+        <property name="rider">
+            <bean class="domain.Rider">
+                <property name="name" value="Hahn"/>
+                <property name="country" value="Germany"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="Strike" class="domain.Horse">
+        <property name="name" value="Strike"/>
+        <property name="startNumber" value="3"/>
+        <property name="breed">
+            <bean class="domain.Breed">
+                <property name="name" value="Polish"/>
+            </bean>
+        </property>
+        <property name="rider">
+            <bean class="domain.Rider">
+                <property name="name" value="Boguslav"/>
+                <property name="country" value="Poland"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="Storm" class="domain.Horse">
+        <property name="name" value="Storm"/>
+        <property name="startNumber" value="4"/>
+        <property name="breed">
+            <bean class="domain.Breed">
+                <property name="name" value="Russian"/>
+            </bean>
+        </property>
+        <property name="rider">
+            <bean class="domain.Rider">
+                <property name="name" value="Petya"/>
+                <property name="country" value="Russia"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="horseService" class="service.DefaultHorseService">
+        <constructor-arg index="0" value="3"/>
+        <constructor-arg index="1">
+            <list>
+                <ref bean="Arrow" />
+                <ref bean="Bullet" />
+                <ref bean="Strike" />
+                <ref bean="Storm" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean name="raceService" class="service.DefaultRaceService">
+        <property name="horseService" ref="horseService"/>
+        <property name="todayRace" ref="race"/>
+    </bean>
+
+    <bean name="emulationService" class="service.DefaultEmulationService">
+        <property name="raceService" ref="raceService"/>
+    </bean>
+
+</beans>
