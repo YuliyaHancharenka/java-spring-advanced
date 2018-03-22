@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <context:property-placeholder location="classpath:application.properties" />
+
+    <bean id="beanA" class="beanTask.bean.BeanA">
+        <property name="sayHello" value="${beanA.word}" />
+    </bean>
+
+    <bean id="beanB" class="beanTask.bean.BeanB">
+       <constructor-arg index="0" ref="beanA"/>
+    </bean>
+
+    <bean id="beanC" class="beanTask.bean.BeanC">
+        <property name="beanD" ref="beanD"/>
+        <lookup-method name="getBeanD" bean="beanD"/>
+    </bean>
+
+    <bean id="beanD" class="beanTask.bean.BeanD" scope="prototype">
+        <property name="beanA" ref="beanA"/>
+    </bean>
+
+    <bean id="replacer" class="beanTask.bean.MultiplicationReplacer"/>
+
+    <bean id="beanE" class="beanTask.bean.BeanE">
+        <replaced-method name="sum" replacer="replacer" />
+    </bean>
+
+    <bean id="beanF" class="beanTask.bean.BeanF" init-method="init" destroy-method="destroySimple"/>
+</beans>
