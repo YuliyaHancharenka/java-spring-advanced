@@ -8,21 +8,33 @@ public class VersionWithStreams {
 
         File[] listOfFiles = srcFolder.listFiles();
         for (File child : listOfFiles) {
+            FileInputStream inputStream = null;
+            BufferedInputStream bufferedInputStream = null;
+            FileOutputStream outputStream = null;
 
-            FileInputStream inputStream = new FileInputStream(child);
-            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+            try {
+                inputStream = new FileInputStream(child);
+                bufferedInputStream = new BufferedInputStream(inputStream);
 
-            int size = inputStream.available();
-            byte b[] = new byte[size];
-            bufferedInputStream.read(b);
+                int size = inputStream.available();
+                byte b[] = new byte[size];
+                bufferedInputStream.read(b);
 
-            FileOutputStream outputStream = new FileOutputStream(new File(destFolder.getPath() + child.getName()));
-            outputStream.write(b);
+                outputStream = new FileOutputStream(new File(destFolder.getPath() + "/" + child.getName()));
+                outputStream.write(b);
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (bufferedInputStream != null) {
+                    bufferedInputStream.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+                child.delete();
+            }
 
-            inputStream.close();
-            bufferedInputStream.close();
-            outputStream.close();
-            child.delete();
         }
     }
 }

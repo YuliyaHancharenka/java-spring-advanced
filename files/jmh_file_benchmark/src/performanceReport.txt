@@ -1,6 +1,0 @@
-# Run complete. Total time: 00:00:12
-
-Benchmark                           Mode  Cnt  Score   Error  Units
-FileBenchmark.channelFileCopy       avgt    2  0,058          ms/op
-FileBenchmark.streamBufferFileCopy  avgt    2  0,066          ms/op
-FileBenchmark.streamFileCopy        avgt    2  0,059          ms/op

@@ -1,0 +1,103 @@
+"C:\Program Files\Java\jdk-9.0.4\bin\java" -Dvisualvm.id=103643213422543 "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20363:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin" -Dfile.encoding=UTF-8 -classpath D:\Install\Java\Projects\jmp\files\jmh_file_benchmark\target\classes;C:\Users\julia\.m2\repository\org\openjdk\jmh\jmh-core\1.20\jmh-core-1.20.jar;C:\Users\julia\.m2\repository\net\sf\jopt-simple\jopt-simple\4.6\jopt-simple-4.6.jar;C:\Users\julia\.m2\repository\org\apache\commons\commons-math3\3.2\commons-math3-3.2.jar;C:\Users\julia\.m2\repository\org\openjdk\jmh\jmh-generator-annprocess\1.19\jmh-generator-annprocess-1.19.jar com.epam.file.FileBenchmark
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/C:/Users/julia/.m2/repository/org/openjdk/jmh/jmh-core/1.20/jmh-core-1.20.jar) to field java.io.PrintStream.charOut
+WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=103643213422543 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20363:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 2 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.channelFileCopy
+
+# Run progress: 0,00% complete, ETA 00:00:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 32871,740 ms/op
+Iteration   1: 32032,868 ms/op
+Iteration   2: 31527,794 ms/op
+
+
+Result "com.epam.file.FileBenchmark.channelFileCopy":
+  31780,331 ms/op
+
+
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=103643213422543 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20363:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 2 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.nioFileCopy
+
+# Run progress: 25,00% complete, ETA 00:09:07
+# Fork: 1 of 1
+# Warmup Iteration   1: 0,111 ms/op
+Iteration   1: 0,187 ms/op
+Iteration   2: 0,108 ms/op
+
+
+Result "com.epam.file.FileBenchmark.nioFileCopy":
+  0,148 ms/op
+
+
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=103643213422543 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20363:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 2 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.streamBufferFileCopy
+
+# Run progress: 50,00% complete, ETA 00:04:30
+# Fork: 1 of 1
+# Warmup Iteration   1: 29919,347 ms/op
+Iteration   1: 28443,102 ms/op
+Iteration   2: 28197,932 ms/op
+
+
+Result "com.epam.file.FileBenchmark.streamBufferFileCopy":
+  28320,517 ms/op
+
+
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=103643213422543 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20363:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 2 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.streamFileCopy
+
+# Run progress: 75,00% complete, ETA 00:02:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 64343,403 ms/op
+Iteration   1: 35062,858 ms/op
+tIteration   2: 43157,722 ms/op
+
+
+Result "com.epam.file.FileBenchmark.streamFileCopy":
+  39110,290 ms/op
+
+
+# Run complete. Total time: 00:11:30
+
+Benchmark                           Mode  Cnt      Score   Error  Units
+FileBenchmark.channelFileCopy       avgt    2  31780,331          ms/op
+FileBenchmark.nioFileCopy           avgt    2      0,148          ms/op
+FileBenchmark.streamBufferFileCopy  avgt    2  28320,517          ms/op
+FileBenchmark.streamFileCopy        avgt    2  39110,290          ms/op
+
+Process finished with exit code 0

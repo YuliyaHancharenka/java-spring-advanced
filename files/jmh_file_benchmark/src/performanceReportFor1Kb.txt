@@ -1,0 +1,143 @@
+"C:\Program Files\Java\jdk-9.0.4\bin\java" -Dvisualvm.id=104674145726405 "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20571:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin" -Dfile.encoding=UTF-8 -classpath D:\Install\Java\Projects\jmp\files\jmh_file_benchmark\target\classes;C:\Users\julia\.m2\repository\org\openjdk\jmh\jmh-core\1.20\jmh-core-1.20.jar;C:\Users\julia\.m2\repository\net\sf\jopt-simple\jopt-simple\4.6\jopt-simple-4.6.jar;C:\Users\julia\.m2\repository\org\apache\commons\commons-math3\3.2\commons-math3-3.2.jar;C:\Users\julia\.m2\repository\org\openjdk\jmh\jmh-generator-annprocess\1.19\jmh-generator-annprocess-1.19.jar com.epam.file.FileBenchmark
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/C:/Users/julia/.m2/repository/org/openjdk/jmh/jmh-core/1.20/jmh-core-1.20.jar) to field java.io.PrintStream.charOut
+WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=104674145726405 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20571:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.channelFileCopy
+
+# Run progress: 0,00% complete, ETA 00:00:44
+# Fork: 1 of 1
+# Warmup Iteration   1: 0,060 ms/op
+Iteration   1: 0,058 ms/op
+Iteration   2: 0,065 ms/op
+Iteration   3: 0,059 ms/op
+Iteration   4: 0,055 ms/op
+Iteration   5: 0,056 ms/op
+Iteration   6: 0,057 ms/op
+Iteration   7: 0,055 ms/op
+Iteration   8: 0,058 ms/op
+Iteration   9: 0,057 ms/op
+Iteration  10: 0,059 ms/op
+
+
+Result "com.epam.file.FileBenchmark.channelFileCopy":
+  0,058 ±(99.9%) 0,004 ms/op [Average]
+  (min, avg, max) = (0,055, 0,058, 0,065), stdev = 0,003
+  CI (99.9%): [0,054, 0,062] (assumes normal distribution)
+
+
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=104674145726405 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20571:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.nioFileCopy
+
+# Run progress: 25,00% complete, ETA 00:00:36
+# Fork: 1 of 1
+# Warmup Iteration   1: 0,057 ms/op
+Iteration   1: 0,056 ms/op
+Iteration   2: 0,055 ms/op
+Iteration   3: 0,055 ms/op
+Iteration   4: 0,055 ms/op
+Iteration   5: 0,055 ms/op
+Iteration   6: 0,055 ms/op
+Iteration   7: 0,058 ms/op
+Iteration   8: 0,057 ms/op
+Iteration   9: 0,060 ms/op
+Iteration  10: 0,055 ms/op
+
+
+Result "com.epam.file.FileBenchmark.nioFileCopy":
+  0,056 ±(99.9%) 0,003 ms/op [Average]
+  (min, avg, max) = (0,055, 0,056, 0,060), stdev = 0,002
+  CI (99.9%): [0,053, 0,059] (assumes normal distribution)
+
+
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=104674145726405 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20571:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.streamBufferFileCopy
+
+# Run progress: 50,00% complete, ETA 00:00:24
+# Fork: 1 of 1
+# Warmup Iteration   1: 0,070 ms/op
+Iteration   1: 0,066 ms/op
+Iteration   2: 0,066 ms/op
+Iteration   3: 0,066 ms/op
+Iteration   4: 0,064 ms/op
+Iteration   5: 0,065 ms/op
+Iteration   6: 0,062 ms/op
+Iteration   7: 0,062 ms/op
+Iteration   8: 0,063 ms/op
+Iteration   9: 0,066 ms/op
+Iteration  10: 0,064 ms/op
+
+
+Result "com.epam.file.FileBenchmark.streamBufferFileCopy":
+  0,064 ±(99.9%) 0,002 ms/op [Average]
+  (min, avg, max) = (0,062, 0,064, 0,066), stdev = 0,001
+  CI (99.9%): [0,062, 0,066] (assumes normal distribution)
+
+
+# JMH version: 1.20
+# VM version: JDK 9.0.4, VM 9.0.4+11
+# VM invoker: C:\Program Files\Java\jdk-9.0.4\bin\java.exe
+# VM options: -Dvisualvm.id=104674145726405 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\lib\idea_rt.jar=20571:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017\bin -Dfile.encoding=UTF-8
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.epam.file.FileBenchmark.streamFileCopy
+
+# Run progress: 75,00% complete, ETA 00:00:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 0,056 ms/op
+Iteration   1: 0,057 ms/op
+Iteration   2: 0,056 ms/op
+Iteration   3: 0,060 ms/op
+Iteration   4: 0,056 ms/op
+Iteration   5: 0,056 ms/op
+Iteration   6: 0,055 ms/op
+Iteration   7: 0,055 ms/op
+Iteration   8: 0,056 ms/op
+Iteration   9: 0,056 ms/op
+Iteration  10: 0,056 ms/op
+
+
+Result "com.epam.file.FileBenchmark.streamFileCopy":
+  0,056 ±(99.9%) 0,002 ms/op [Average]
+  (min, avg, max) = (0,055, 0,056, 0,060), stdev = 0,001
+  CI (99.9%): [0,054, 0,058] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:47
+
+Benchmark                           Mode  Cnt  Score   Error  Units
+FileBenchmark.channelFileCopy       avgt   10  0,058 ± 0,004  ms/op
+FileBenchmark.nioFileCopy           avgt   10  0,056 ± 0,003  ms/op
+FileBenchmark.streamBufferFileCopy  avgt   10  0,064 ± 0,002  ms/op
+FileBenchmark.streamFileCopy        avgt   10  0,056 ± 0,002  ms/op
+
+Process finished with exit code 0

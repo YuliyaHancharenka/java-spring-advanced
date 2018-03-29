@@ -12,7 +12,7 @@ public class VersionWithStreamsAndBuffer {
         File[] listOfFiles = srcFolder.listFiles();
         for (File child : listOfFiles) {
             FileInputStream inputStream = new FileInputStream(child);
-            FileOutputStream outputStream = new FileOutputStream(new File(destFolder.getPath() + child.getName()));
+            FileOutputStream outputStream = new FileOutputStream(new File(destFolder.getPath() + "/" + child.getName()));
             while (inputStream.read(buffer) != -1) {
                 try {
                     outputStream.write(buffer);

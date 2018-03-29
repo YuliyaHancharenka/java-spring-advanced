@@ -16,7 +16,7 @@ public class VersionWithFileChannel {
             FileChannel destination = null;
             try {
                 source = new FileInputStream(child).getChannel();
-                destination = new FileOutputStream(new File(destFolder.getPath() + child.getName())).getChannel();
+                destination = new FileOutputStream(new File(destFolder.getPath() + "/" + child.getName())).getChannel();
 
                 long count = 0;
                 long size = source.size();
@@ -28,8 +28,8 @@ public class VersionWithFileChannel {
                 if (destination != null) {
                     destination.close();
                 }
+                child.delete();
             }
-            child.delete();
         }
     }
 }

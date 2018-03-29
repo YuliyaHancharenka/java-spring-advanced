@@ -22,15 +22,12 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 public class FileBenchmark {
 
-    private File srcFolder;
-    private File destFolder;
+    private File srcFolder = new File("D:/EPAM/from");
+    private File destFolder = new File("D:/EPAM/to");
     private File fileToSetup = new File("D:/EPAM/setup/input.txt");
 
     @Setup(Level.Iteration)
     public void setup() throws IOException {
-        System.out.println("setup");
-        srcFolder = new File("D:/EPAM/from");
-        destFolder = new File("D:/EPAM/to");
         removeAllFilesFromDir(srcFolder);
         removeAllFilesFromDir(destFolder);
         Files.copy(fileToSetup.toPath(), Paths.get(srcFolder.getPath(), "input.txt"), StandardCopyOption.REPLACE_EXISTING);
@@ -69,7 +66,7 @@ public class FileBenchmark {
         Options opt = new OptionsBuilder()
                 .include(FileBenchmark.class.getSimpleName())
                 .warmupIterations(1)
-                .measurementIterations(2)
+                .measurementIterations(10)
                 .forks(1)
                 .build();
         new Runner(opt).run();
