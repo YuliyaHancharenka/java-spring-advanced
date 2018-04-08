@@ -61,16 +61,15 @@ public class DataCreation {
 
             //Filling table 'users'
             for (int myID = 1; myID <= usersCount; myID++) {
-                st.execute(
-                        "insert into " + dbName + ".users (name, surname, birthdate)" +
-                                " values ('"
-                                + firstNamesList.get(random.nextInt(firstNamesList.size())) + "', '"
-                                + surnamesList.get(random.nextInt(surnamesList.size())) + "', '"
-                                + LocalDateTime.now()
-                                .minusYears(random.nextInt(60 - 14) + 14)
-                                .minusMonths(random.nextInt(12))
-                                .minusDays(random.nextInt(30)).toString()
-                                + "');");
+                PreparedStatement stP = connection.prepareStatement("INSERT INTO " + dbName + ".users (name, surname, birthdate)" +
+                        " values (?, ?, ?);");
+                stP.setString(1, String.valueOf(firstNamesList.get(random.nextInt(firstNamesList.size()))));
+                stP.setString(2, String.valueOf(surnamesList.get(random.nextInt(surnamesList.size()))));
+                stP.setString(3, LocalDateTime.now()
+                        .minusYears(random.nextInt(60 - 14) + 14)
+                        .minusMonths(random.nextInt(12))
+                        .minusDays(random.nextInt(30)).toString());
+                stP.executeUpdate();
 
                 HashSet<Integer> friends = new HashSet<>();
                 for (int j = 1; j < random.nextInt(usersCount / 4 - usersCount / 12) + usersCount / 12; j++) {
@@ -89,16 +88,19 @@ public class DataCreation {
                             .minusMonths(random.nextInt(12))
                             .minusDays(random.nextInt(30)).toString();
                     try {
-                        st.execute(
-                                "insert into " + dbName + ".friendships (userid1, userid2, timestamp)" +
-                                        " values (" + me + "," + myFriend + ",'"
-                                        + outDate +
-                                        "')");
-                        st.execute(
-                                "insert into " + dbName + ".friendships (userid1, userid2, timestamp)" +
-                                        " values (" + myFriend + "," + me + ",'"
-                                        + outDate +
-                                        "')");
+                        PreparedStatement stP = connection.prepareStatement("INSERT INTO " + dbName + ".friendships (userid1, userid2, timestamp)" +
+                                " values (?, ?, ?);");
+                        stP.setInt(1, me);
+                        stP.setInt(2, myFriend);
+                        stP.setString(3, outDate);
+                        stP.executeUpdate();
+
+                        PreparedStatement stP2 = connection.prepareStatement("INSERT INTO " + dbName + ".friendships (userid1, userid2, timestamp)" +
+                                " values (?, ?, ?);");
+                        stP2.setInt(1, myFriend);
+                        stP2.setInt(2, me);
+                        stP2.setString(3, outDate);
+                        stP2.executeUpdate();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -112,13 +114,13 @@ public class DataCreation {
                     String outDate = LocalDateTime.now()
                             .minusMonths(random.nextInt(12))
                             .minusDays(random.nextInt(30)).toString();
-                    st.execute(
-                            "insert into " + dbName + ".posts (id, userId, text, timestamp)" +
-                                    " values (" + i + ", "
-                                    + userID + ", '"
-                                    + RandomStringUtils.random(500, true, false) + "', '"
-                                    + outDate
-                                    + "');");
+                    PreparedStatement stP = connection.prepareStatement("INSERT INTO " + dbName + ".posts (id, userId, text, timestamp)" +
+                            " values (?, ?, ?, ?);");
+                    stP.setInt(1, i);
+                    stP.setInt(2, userID);
+                    stP.setString(3, RandomStringUtils.random(500, true, false));
+                    stP.setString(4, outDate);
+                    stP.executeUpdate();
                 } catch (Throwable t) {
                     t.printStackTrace();
                 }
@@ -130,15 +132,14 @@ public class DataCreation {
                 int postID = random.nextInt(postCount);
 
                 try {
-                    st.execute(
-                            "insert into " + dbName + ".likes (postid, userid, timestamp)" +
-                                    " values ("
-                                    + postID + ", "
-                                    + userID + ", '"
-                                    + LocalDateTime.now()
-                                    .minusMonths(random.nextInt(12))
-                                    .minusDays(random.nextInt(30))
-                                    + "');");
+                    PreparedStatement stP = connection.prepareStatement("INSERT INTO " + dbName + ".likes (postid, userid, timestamp)" +
+                            " values (?, ?, ?);");
+                    stP.setInt(1, i);
+                    stP.setInt(2, userID);
+                    stP.setString(3, LocalDateTime.now()
+                            .minusMonths(random.nextInt(12))
+                            .minusDays(random.nextInt(30)).toString());
+                    stP.executeUpdate();
                 } catch (Throwable t) {
                     System.out.println("userID: " + userID + " / postID: " + postID);
                 }
